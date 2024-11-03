@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Gestion des Commerciaux</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue dans l'outil de gestion des commerciaux</h1>
+    <p>Veuillez vous connecter pour accéder à votre tableau de bord et gérer vos clients et rapports.</p>
+    <a href="login.html" class="login-button">Connexion</a>
+  </div>
+
+  <style>
+    /* Style spécifique pour l'accueil */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .login-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0f0233;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .login-button:hover {
+      background-color: #4e3d7f;
+    }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+
+<!-- Configuration Firebase -->
+<script src="js/firebaseConfig.js"></script>
+
+<!-- Scripts personnalisés -->
+
+</body>
+</html>

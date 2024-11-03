@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de Bord des Responsables</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <h1>Tableau de Bord des Responsables</h1>
+  
+  <!-- Section pour afficher le nom de la société -->
+  <h2 id="societeId" style="color: gray;">Société : </h2> <!-- Le nom de la société sera affiché ici -->
+
+  <!-- Bouton pour se déconnecter et revenir à la page de connexion -->
+  <button onclick="exitToHome()">Déconnexion</button>
+
+  <!-- Section pour sélectionner un commercial spécifique -->
+  <label for="commercialSelector">Sélectionner un commercial :</label>
+  <select id="commercialSelector" onchange="afficherRapport()">
+    <option value="">-- Tous les commerciaux --</option>
+  </select>
+
+  <!-- Sélecteurs de date pour filtrer les ventes par plage -->
+  <label for="startDate">De :</label>
+  <input type="date" id="startDate" onchange="afficherRapport()">
+  <label for="endDate">À :</label>
+  <input type="date" id="endDate" onchange="afficherRapport()">
+
+  <!-- Tableau récapitulatif des ventes par commercial -->
+  <h2>Récapitulatif des Ventes par Commercial</h2>
+  <table id="tableRecapCommerciaux">
+    <thead>
+      <tr>
+        <th>Commercial</th>
+        <th>Total des Ventes</th>
+        <th>Pourcentage (%)</th>
+        <th>Montant Calculé</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <th>Grand Total</th>
+        <th id="grandTotal">0 MAD</th>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- Bouton pour générer le diagramme -->
+  <button onclick="toggleDiagramme()">Générer le Diagramme</button>
+
+  <!-- Zone pour le diagramme en disque -->
+  <canvas id="salesChart" width="400" height="400"></canvas>
+
+  <!-- Tableau pour les détails des clients et ventes -->
+  <h2>Détails des Transactions</h2>
+  <table id="tableDetailsClients">
+    <thead>
+      <tr>
+        <th>Commercial</th>
+        <th>Nom du Client</th>
+        <th>N° B COMMANDE/R</th>
+        <th>Montant de l'Opération (MAD)</th>
+        <th>Date de l'Opération</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Section pour afficher et supprimer les commerciaux de la société -->
+  <h2>Liste des Commerciaux</h2>
+  <ul id="commercialsContainer">
+    <!-- La liste des commerciaux avec bouton de suppression sera générée ici par JavaScript -->
+  </ul>
+
+  <!-- Charger Firebase SDK et Chart.js depuis les CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Charger la configuration Firebase et les scripts spécifiques -->
+  <script src="js/firebaseConfig.js"></script>
+  <script src="js/responsable.js"></script>
+  <script src="js/auth.js"></script> <!-- Contient la fonction exitToHome() -->
+</body>
+</html>

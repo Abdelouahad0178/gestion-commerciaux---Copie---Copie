@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de Bord Commercial</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    /* Style pour afficher le titre en vert */
+    .dashboard-title {
+      color: green;
+      font-weight: bold;
+    }
+    /* Style pour la zone de recherche */
+    #searchBar {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    /* Style pour le tableau */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Section pour afficher le nom du commercial avec style vert -->
+  <h1 id="commercialName" class="dashboard-title">Tableau de Bord Commercial</h1>
+  <!-- Section pour afficher l'ID de la société -->
+  <h2 id="societeId" style="color: gray;">Société : </h2>
+
+  <!-- Bouton pour se déconnecter -->
+  <button onclick="exitToHome()">Déconnexion</button>
+
+  <!-- Barre de recherche pour filtrer les opérations -->
+  <input type="text" id="searchBar" placeholder="Rechercher dans les opérations..." onkeyup="filterTable()">
+
+  <!-- Formulaire pour ajouter ou modifier un client -->
+  <h2 id="formTitle">Ajouter un Client</h2>
+  <form id="addClientForm" onsubmit="ajouterOuModifierClient(event)">
+    <input type="hidden" id="clientId"> <!-- Champ caché pour l'ID du client en cours de modification -->
+    <input type="text" id="clientName" placeholder="Nom du Client" required>
+    <input type="number" id="clientAmount" placeholder="Montant de l'Opération (MAD)" required>
+    <input type="text" id="orderNumber" placeholder="N° B COMMANDE/C" required>
+    <button type="submit" id="submitButton">Ajouter Client</button>
+  </form>
+
+  <!-- Sélecteurs de date pour filtrer les opérations par plage -->
+  <label for="startDate">De :</label>
+  <input type="date" id="startDate">
+  <label for="endDate">À :</label>
+  <input type="date" id="endDate">
+
+  <!-- Tableau pour les opérations des clients -->
+  <h2>Opérations des Clients</h2>
+  <table id="tableOperationsClients">
+    <thead>
+      <tr>
+        <th>Nom du Client</th>
+        <th>Montant de l'Opération (MAD)</th>
+        <th>N° B COMMANDE/R</th>
+        <th>Date de l'Opération</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <th colspan="1">Total</th>
+        <th id="totalAmount" class="total-amount" style="color: blue;">0 MAD</th>
+        <th colspan="4"></th>
+      </tr>
+    </tfoot>
+  </table>
+
+
+
+
+
+
+
+
+  <style>
+    /* Couleur de fond du tableau */
+    table#tableOperationsClients {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f9f9f9; /* Couleur de fond */
+    }
+  
+    /* Style des en-têtes de colonne */
+    table#tableOperationsClients th {
+      background-color: #4CAF50; /* Couleur de fond des en-têtes */
+      color: white;              /* Couleur du texte des en-têtes */
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid #ddd;    /* Bordure de l'en-tête */
+    }
+  
+    /* Style des cellules de données */
+    table#tableOperationsClients td {
+      border: 1px solid #ddd;    /* Bordure des cellules */
+      padding: 8px;
+      text-align: center;
+    }
+  
+    /* Couleur de fond des lignes impaires */
+    table#tableOperationsClients tr:nth-child(odd) {
+      background-color: #f2f2f2; /* Lignes impaires */
+    }
+  
+    /* Couleur de fond des lignes paires */
+    table#tableOperationsClients tr:nth-child(even) {
+      background-color: #e9f7ef; /* Lignes paires */
+    }
+  
+    /* Couleur au survol des lignes */
+    table#tableOperationsClients tr:hover {
+      background-color: #c8e6c9; /* Couleur lors du survol */
+    }
+  
+    /* Couleur du total en bas du tableau */
+    #totalAmount {
+      color: #1565c0;           /* Couleur bleu foncé pour le total */
+      font-weight: bold;
+    }
+  </style>
+  
+
+
+
+
+  <!-- Charger Firebase SDK depuis le CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+
+  <!-- Charger la configuration Firebase et le script pour commercial -->
+  <script src="js/firebaseConfig.js"></script>
+  
+  <script src="js/auth.js"></script> <!-- Contient la fonction exitToHome() -->
+  <script src="js/commercial.js"></script>
+</body>
+</html>
